@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:preload_page_view/preload_page_view.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
     startTimer();
   }
 
-  PageController _pageController = PageController(initialPage: 0);
+  PreloadPageController _pageController = PreloadPageController(initialPage: 0);
   int pageChanged = 0;
 
   void startTimer() {
@@ -50,42 +51,44 @@ class _HomeViewState extends State<HomeView> {
         appBar: AppBar(
           title: Text('PageView Demo'),
         ),
-        body: PageView(
-          controller: _pageController,
-          children: [
-            Image.asset(
-              imageList[0],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[1],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[2],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[3],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[4],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[5],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[6],
-              fit: BoxFit.scaleDown,
-            ),
-            Image.asset(
-              imageList[7],
-              fit: BoxFit.scaleDown,
-            ),
-          ],
+        body: Container(
+          child: PreloadPageView(
+            controller: _pageController,
+            children: [
+              Image.asset(
+                imageList[0],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[1],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[2],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[3],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[4],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[5],
+                fit: BoxFit.scaleDown,
+              ),
+              Image.asset(
+                imageList[6],
+                fit: BoxFit.cover,
+              ),
+              Image.asset(
+                imageList[7],
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
         ));
   }
 }
